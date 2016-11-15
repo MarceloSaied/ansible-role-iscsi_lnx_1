@@ -20,5 +20,7 @@ galaxy_info:
     - centos
     - el
     - rhel
+    - base
+    - storage
     
 dependencies: []
