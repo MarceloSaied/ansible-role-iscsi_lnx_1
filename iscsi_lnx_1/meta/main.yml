@@ -1,5 +1,5 @@
 galaxy_info:
-  author: Marcelo Saied
+  author: MarceloSaied
   description: An Ansible role that installs ISCSI to NETAPP on Centos 6.x
   company: My company 
 
