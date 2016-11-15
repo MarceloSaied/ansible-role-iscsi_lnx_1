@@ -1,2 +1,28 @@
 ---
-# tasks file for iscsi_lnx_1
+  - hosts: newservers
+    remote_user: root
+    vars:
+      iscsi_target_portal: navecb:3260
+    tasks:
+      - name: test connection
+        ping:
+        
+      - name: Install iscsi-initiator-utils
+        yum: name=iscsi-initiator-utils state=installed
+        
+      - name: Start and enable iscsid service
+        service: name=iscsid enabled=yes state=started       
+
+      - name: setup initiator iqn name into /etc/iscsi/initiatorname.iscsi
+        lineinfile: dest=/etc/iscsi/initiatorname.iscsi regexp="^InitiatorName=" line="InitiatorName=iqn.1994-05.com.redhat:$HOSTNAME-$(date +"%Y%m%d")"
+        notify: restart iscsid
+
+      - name: Request IQNs data
+        shell: "cat /etc/iscsi/initiatorname.iscsi"
+        
+      - name: end sentence
+        shell: echo 'End tasks'
+
+    handelers:
+      - name: restart iscsid
+        service: name=iscsid state=restarted
