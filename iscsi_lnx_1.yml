@@ -1,0 +1,5 @@
+---
+  - hosts: newservers
+    remote_user: root
+    roles:
+      - iscsi_lnx_1
