@@ -1,6 +1,6 @@
 # README.md
 # ansible-role-iscsi_lnx_1
-Ansible iscasi configuration for Linux Centos 6.x
+Ansible iscsi configuration for Linux Centos 6.x
 
 Role Name
 =========
